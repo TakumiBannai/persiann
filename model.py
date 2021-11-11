@@ -2,8 +2,12 @@
 """PERSIANN-CNN model.
 
 - CNN networks
-- Input WV: [32, 32, 1]
-- Input IR: [32, 32, 1]
+- Usage;
+x_IR = torch.rand([100, 1, 32, 32])
+x_WV = torch.rand([100, 1, 32, 32])
+x_cat = torch.rand([100, 64, 8, 8])
+model = Persiann()
+model(x_IR, x_WV).shape
 
 """
 import torch
@@ -13,24 +17,24 @@ class Persiann(nn.Module):
     def __init__(self):
         super().__init__()
         # IR channel convolution
-        self.conv_IR = nn.Sequential(nn.Conv2d(1, 16, 4, 2, 1),
+        self.conv_IR = nn.Sequential(nn.Conv2d(1, 16, 3, 1, 1),
                                      nn.MaxPool2d(2, 2, 0),
-                                     nn.Conv2d(16, 32, 4, 2, 1),
-                                     nn.MaxPool2d(2),
+                                     nn.Conv2d(16, 32, 3, 1, 1),
+                                     nn.MaxPool2d(2, 2, 0),
                                      nn.ReLU()
                                      )
         # WV channel convolution
-        self.conv_WV = nn.Sequential(nn.Conv2d(1, 16, 4, 2, 1),
+        self.conv_WV = nn.Sequential(nn.Conv2d(1, 16, 3, 1, 1),
                                      nn.MaxPool2d(2, 2, 0),
-                                     nn.Conv2d(16, 32, 4, 2, 1),
-                                     nn.MaxPool2d(2),
+                                     nn.Conv2d(16, 32, 3, 1, 1),
+                                     nn.MaxPool2d(2, 2, 0),
                                      nn.ReLU()
                                      )
         # Decoder network
-        self.decoder = nn.Sequential(nn.ConvTranspose2d(64, 64, 5, 2),
-                                     nn.ConvTranspose2d(64, 128, 5, 2),
-                                     nn.Conv2d(128, 256, 4),
-                                     nn.Conv2d(256, 1, 9),
+        self.decoder = nn.Sequential(nn.ConvTranspose2d(64, 64, 4, 2, 1),
+                                     nn.ConvTranspose2d(64, 128, 4, 2, 1),
+                                     nn.Conv2d(128, 256, 3, 1, 1),
+                                     nn.Conv2d(256, 1, 9, 1, 4),
                                      nn.ReLU()
                                      )
 
@@ -44,10 +48,7 @@ class Persiann(nn.Module):
 
 
 # test
-x_IR = torch.rand([100, 1, 32, 32])
-x_WV = torch.rand([100, 1, 32, 32])
 
-model = Persiann()
 
-model(x_IR, x_WV).shape
-# 100, 16, 32, 32
+
+# 100, 64, 16, 16
