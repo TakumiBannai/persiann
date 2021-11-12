@@ -11,4 +11,3 @@
 - Usage;
 ````
 python main.py
-```
