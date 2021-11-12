@@ -7,3 +7,8 @@
   - https://journals.ametsoc.org/view/journals/hydr/20/12/jhm-d-19-0110_1.xml
 
 - NOTE: This sample code uses the dummy data(generated from rand function).
+
+- Usage;
+````
+python main.py
+```
