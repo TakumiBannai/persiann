@@ -63,12 +63,12 @@ def retrieve_result(device, model, dataloader):
     labels = []
     # Retreive prediction and labels
     with torch.no_grad():
-        for data, label in dataloader:
-            data, label = data.to(device), label.to(device)
-            output = model(data)
+        for x1, x2, y in dataloader:
+            x1, x2, y = x1.to(device), x2.to(device), y.to(device)
+            y_hat = model(x1, x2)
             # Collect data
-            preds.append(output)
-            labels.append(label)
+            preds.append(y_hat)
+            labels.append(y)
     # Flatten
     preds = torch.cat(preds, axis=0)
     labels = torch.cat(labels, axis=0)

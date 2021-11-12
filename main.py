@@ -84,3 +84,4 @@ for epoch in tqdm(range(epoch)):
 preds, labels = retrieve_result(device, model, test_loader)
 rmse_score = np.sqrt(((preds.reshape(-1) - labels.reshape(-1)) ** 2).mean())
 print("RMSE-score: ", rmse_score)
+
