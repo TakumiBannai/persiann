@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 """PERSIANN-CNN model.
 
-- CNN networks
-- Usage;
-x_IR = torch.rand([100, 1, 32, 32])
-x_WV = torch.rand([100, 1, 32, 32])
+- Usage (Input: batch, dim, height, width)
+x_ir = torch.rand([100, 1, 32, 32])
+x_wv = torch.rand([100, 1, 32, 32])
 x_cat = torch.rand([100, 64, 8, 8])
 model = Persiann()
-model(x_IR, x_WV).shape
+out = model(x_ir, x_wv)
 
 """
 import torch
@@ -38,17 +37,9 @@ class Persiann(nn.Module):
                                      nn.ReLU()
                                      )
 
-    def forward(self, x_IR, x_WV):
-        x_IR = self.conv_IR(x_IR)
-        x_WV = self.conv_WV(x_WV)
-        x = torch.cat((x_IR, x_IR), dim=1)
+    def forward(self, x_ir, x_wv):
+        x_ir = self.conv_IR(x_ir)
+        x_wv = self.conv_WV(x_wv)
+        x = torch.cat((x_ir, x_wv), dim=1)
         x = self.decoder(x)
         return x
-
-
-
-# test
-
-
-
-# 100, 64, 16, 16
