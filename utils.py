@@ -3,6 +3,7 @@
 
 - fix random seed
 - data preprocessing
+- model training
 
 """
 

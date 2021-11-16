@@ -2,8 +2,8 @@
 """main file.
 
 - run the files;
-1. Dataset & dataloader
-2. Model the training
+1. Dataset & dataloader preparation
+2. Model the training on the dummy data
 3. Evalution
 
 """

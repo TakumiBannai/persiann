@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Dataset.
 
-Usage;
+usage;
 n_sample = 1000
 n_channel = 1
 width = 32

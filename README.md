@@ -1,6 +1,6 @@
 # persiann
 
-- Premitive implimentation of IR-Precipitatioin model.
+- Premitive Pytorch implimentation of IR-Precipitatioin model.
 
 - The original paper is as follows;
   - PERSIANN-CNN: Precipitation Estimation from Remotely Sensed Information Using Artificial Neural Networks–Convolutional Neural Networks
