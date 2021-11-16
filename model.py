@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """PERSIANN-CNN model.
 
-- Usage (Input: batch, dim, height, width)
+- usage (Input: batch, dim, height, width)
 x_ir = torch.rand([100, 1, 32, 32])
 x_wv = torch.rand([100, 1, 32, 32])
 x_cat = torch.rand([100, 64, 8, 8])
