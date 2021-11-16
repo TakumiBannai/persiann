@@ -1,4 +1,4 @@
-# persiann
+# PERSIANN-CNN
 
 - Premitive Pytorch implimentation of IR-Precipitatioin model.
 
